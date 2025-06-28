@@ -333,4 +333,33 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
+<!-- Tabella Prodotti - MFE2 -->
+<div class="products-container">
+  <h1>Catalogo Prodotti - MFE2</h1>
+  <table class="products-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Prodotto</th>
+        <th>Categoria</th>
+        <th>Prezzo</th>
+        <th>Disponibilità</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products" [class.unavailable]="!product.disponibile">
+        <td>{{ product.id }}</td>
+        <td>{{ product.nome }}</td>
+        <td>{{ product.categoria }}</td>
+        <td>€{{ product.prezzo | number:'1.2-2' }}</td>
+        <td>
+          <span class="status" [class.available]="product.disponibile" [class.unavailable]="!product.disponibile">
+            {{ product.disponibile ? 'Disponibile' : 'Esaurito' }}
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
 <router-outlet />
